@@ -1,5 +1,5 @@
 import React from "react";
-import Forecast from "../forecast/forecast";
+import Forecast from "../forecast/Forecast";
 import Hourly from "../hourly/Hourly";
 
 const Second = () => {

@@ -10,8 +10,10 @@ const TodaysData = () => {
   const [dataCurrent, setDataCurrent] = useState(null);
   const [dataAstro, setDataAstro] = useState(null);
   const [dataLocation, setDataLocation] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(
         "https://api.weatherapi.com/v1/forecast.json?key=449210b97dec4534b03150245242412&q=tashkent&days=1&aqi=yes&alerts=yes"
@@ -20,8 +22,21 @@ const TodaysData = () => {
         setDataCurrent(res.data.current);
         setDataAstro(res.data.forecast.forecastday[0].astro);
         setDataLocation(res.data.location);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
       });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="w-[800px] h-[350px] bg-white rounded-xl p-6 shadow-lg text-gray-800 mx-auto flex justify-center items-center">
+        <div className="text-xl">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-[800px] h-[350px] bg-white rounded-xl p-6 shadow-lg text-gray-800 mx-auto flex flex-col justify-between">
