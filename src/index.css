@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.containerM {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.input {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
